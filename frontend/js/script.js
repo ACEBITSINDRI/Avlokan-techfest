@@ -7,7 +7,7 @@
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:3000/api'
     : 'https://avlokan-backend.onrender.com/api';
-const EVENT_DATE = new Date('2026-05-07T09:00:00+05:30');
+const EVENT_DATE = new Date('2026-05-09T09:00:00+05:30');
 
 // ─── Hero Typing Effect ───────────────────────────────
 (function heroTyping() {

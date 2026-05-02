@@ -183,6 +183,19 @@ img {
     color: #0a0e1a;
 }
 
+.btn-unstop {
+    background: linear-gradient(135deg, #1C4481, #255BAA);
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(37, 91, 170, 0.3);
+    border: none;
+}
+
+.btn-unstop:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(37, 91, 170, 0.45);
+    color: #ffffff;
+}
+
 .btn-outline {
     background: transparent;
     border: 1.5px solid var(--border-strong);
