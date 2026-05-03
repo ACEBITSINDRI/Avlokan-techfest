@@ -184,17 +184,45 @@ img {
 }
 
 .btn-unstop {
-    background: linear-gradient(135deg, #1C4481, #255BAA);
-    color: #ffffff;
-    box-shadow: 0 4px 20px rgba(37, 91, 170, 0.3);
-    border: none;
+    position: relative;
+    background: #ffffff !important;
+    color: #1c4ed8 !important;
+    border: 1.5px solid #1c4ed8 !important;
+    box-shadow: 0 2px 10px rgba(28, 78, 216, 0.15) !important;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    padding: 8px 20px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    border-radius: 30px !important; /* Pill shape for stylish look */
+    letter-spacing: 0.2px;
+    text-shadow: none;
+    width: max-content !important; /* Override inline width 100% */
+    margin: 10px auto 0 auto !important; /* Center the button in cards */
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensure the Unstop logo image displays perfectly */
+.btn-unstop img {
+    height: 18px !important;
+    width: auto !important;
+    margin-right: 8px !important;
+    filter: none !important; /* Ensure logo keeps its original colors */
 }
 
 .btn-unstop:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(37, 91, 170, 0.45);
-    color: #ffffff;
+    box-shadow: 0 6px 15px rgba(28, 78, 216, 0.25) !important;
+    background: #f4f7ff !important; /* Slight blue tint on hover */
+    border-color: #1c4ed8 !important;
 }
+
+.btn-unstop::before {
+    display: none; /* Remove legacy gradient sweep */
+}
+
 
 .btn-outline {
     background: transparent;
