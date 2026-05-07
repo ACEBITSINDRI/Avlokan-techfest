@@ -78,6 +78,18 @@ const PROBLEMS = {
         { code: 'P43', title: 'Real-Time Healthcare AI', type: 'Hardware / Software', desc: 'AI-powered real-time patient monitoring with wearable devices for rural healthcare deployment.' }
     ],
     'TRK-E': [
+        // ── Open Innovation (NEW — from Hackathon_Problem_Statements.docx) ──
+        { code: 'OI-01', title: 'Smart Rainwater Harvesting & Greywater Recycling System', type: 'Civil Engineering', domain: 'civil', isNew: true, problem: 'Massive water wastage in college hostels — no system to reuse greywater for gardening or toilets.', solution: 'Design a structural & plumbing plan that captures rainwater and recycles sink/shower water for reuse.', deliverable: 'Basic 3D model (AutoCAD/SketchUp) or 2D floor plan, cost-estimation sheet, and 5-slide PPT.' },
+        { code: 'OI-02', title: 'Eco-Friendly Modular Shelters for Disaster Relief', type: 'Civil Engineering', domain: 'civil', isNew: true, problem: 'Current disaster relief tents are not durable, sustainable, or weather-resistant.', solution: 'Design a rapid-assembly, low-cost modular shelter using sustainable materials (bamboo, recycled plastic blocks).', deliverable: 'Physical cardboard model OR digital 3D model, structural stability analysis, and PPT.' },
+        { code: 'OI-03', title: 'Intelligent Pothole & Road Damage Reporting Framework', type: 'Civil + Software', domain: 'civil', isNew: true, problem: 'Poor roads cause accidents, but reporting to municipal authorities is tedious and untracked.', solution: 'Conceptual platform where citizens click a photo — it auto-geotags and categorises pothole severity.', deliverable: 'UI/UX prototype (Figma), workflow diagram, and PPT.' },
+        { code: 'OI-04', title: 'Traffic Flow Optimization at Local Bottlenecks', type: 'Civil Engineering', domain: 'civil', isNew: true, problem: 'Heavy traffic congestion at specific local intersections wastes time and fuel daily.', solution: 'Redesign a local intersection layout — propose slip lanes, modified signal timings, or a small roundabout.', deliverable: 'Before/After layout drawings, theoretical traffic flow improvements, and PPT.' },
+        { code: 'OI-05', title: 'Low-Cost Natural Water Filtration for Rural Areas', type: 'Civil Engineering', domain: 'civil', isNew: true, problem: 'Access to clean drinking water is a challenge in remote villages where expensive purifiers are not viable.', solution: 'Build a multi-layer natural filter using sand, gravel, charcoal, and natural coagulants.', deliverable: 'Working physical prototype (built in a plastic bottle/bucket) and PPT explaining filtration stages.' },
+        { code: 'OI-06', title: 'Campus-Connect — Decentralized Lost & Found Portal', type: 'Software / Web Dev', domain: 'software', isNew: true, problem: 'Students frequently lose IDs, keys, devices — WhatsApp groups are too cluttered to track effectively.', solution: 'A simple web app where finders post items with photos, and losers claim them via verification.', deliverable: 'Working basic HTML/CSS/JS website or Figma prototype, and PPT.' },
+        { code: 'OI-07', title: 'Skill-Swap: Peer-to-Peer Learning Network', type: 'Software / Web Dev', domain: 'software', isNew: true, problem: 'Students want to learn new skills (coding, guitar, languages) but paid courses are expensive.', solution: 'A platform matching students — one teaches a skill in exchange for learning another (barter system).', deliverable: 'Working frontend prototype showing user-matching dashboard, and PPT.' },
+        { code: 'OI-08', title: 'Digital Storefront Maker for Local Street Vendors', type: 'Software / Web Dev', domain: 'software', isNew: true, problem: 'Local vendors and hawkers lack the technical skills to list products online or on delivery apps.', solution: 'A 1-click web template generator — vendor inputs name + 3 photos → generates a shareable digital menu link.', deliverable: 'Functional static site generator or polished UI design, and PPT.' },
+        { code: 'OI-09', title: 'AI-Powered Resume ATS Optimizer for Freshers', type: 'Software / AI Tool', domain: 'software', isNew: true, problem: '1st & 2nd-year students struggle to format resumes to pass automated screening (ATS) for internships.', solution: 'A tool where a user pastes resume text + job description — the tool highlights missing keywords.', deliverable: 'Python script or basic web app demonstrating keyword matching, and PPT.' },
+        { code: 'OI-10', title: 'Smart Study Room / Library Seat Tracker', type: 'Software / IoT Concept', domain: 'software', isNew: true, problem: 'Students waste time walking to the library only to find no empty seats available.', solution: 'A system using basic sensors or manual check-in/check-out web counter showing real-time seat availability.', deliverable: 'Simulated web dashboard updating in real-time, basic architecture diagram, and PPT.' },
+        // ── Original PSB Problems ──
         { code: 'P13', title: 'AI Evaluator for Flowcharts & Code', type: 'Software / AI Tool', desc: 'Intelligent evaluation system for flowcharts, algorithms, and pseudocode against predefined rubrics.' },
         { code: 'P16', title: 'GenAI Wiring Diagram Generator', type: 'Software / AI Tool', desc: 'GenAI-powered automatic generation of electrical wiring diagrams from panel drawings.' },
         { code: 'P17', title: 'GenAI Material Selection Assistant', type: 'Software / AI Tool', desc: 'GenAI assistant for automated material selection analysing application requirements and global standards.' },
@@ -177,14 +189,74 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 function renderProblems(track) {
     const grid = document.getElementById('problemsGrid');
     const problems = PROBLEMS[track] || [];
-    grid.innerHTML = problems.map(p => `
-    <div class="problem-card">
-      <div class="problem-code">${p.code} — ${track}</div>
-      <h4>${p.title}</h4>
-      <p>${p.desc}</p>
-      <span class="problem-type">${p.type}</span>
-    </div>
-  `).join('');
+    
+    if (track === 'TRK-E') {
+        // Split into OI (Open Innovation) and PSB (original) problems
+        const oiProblems = problems.filter(p => p.isNew);
+        const psbProblems = problems.filter(p => !p.isNew);
+
+        grid.className = 'problems-grid open-innovation-grid reveal visible';
+        grid.innerHTML = `
+            <div class="oi-hero-banner">
+                <h3>Open Innovation Track</h3>
+                <p>10 problem statements across Civil Engineering and Software domains. Choose a problem, build a working prototype, and present your solution.</p>
+                <div class="oi-hero-tags">
+                    <span class="oi-tag civil">Civil Engineering</span>
+                    <span class="oi-tag software">Software / Web Dev</span>
+                </div>
+                <a href="assets/downloads/AVLOKAN_2026_Open_Innovation_Guidelines.docx" download class="oi-guidelines-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Download Submission Guidelines
+                </a>
+            </div>
+        ` + oiProblems.map((p, i) => `
+            <div class="problem-card oi-card ${p.domain}" style="animation-delay: ${i * 0.08}s">
+                <div class="oi-card-header">
+                    <div class="oi-code-badge">
+                        <span class="oi-code">${p.code}</span>
+                    </div>
+                    <span class="oi-domain-pill ${p.domain}">${p.domain === 'civil' ? 'Civil' : 'Software'}</span>
+                </div>
+                <h4>${p.title}</h4>
+                <div class="oi-details">
+                    <div class="oi-detail-row">
+                        <div class="oi-detail-label">Problem</div>
+                        <div>${p.problem}</div>
+                    </div>
+                    <div class="oi-detail-row">
+                        <div class="oi-detail-label">Solution Approach</div>
+                        <div>${p.solution}</div>
+                    </div>
+                    <div class="oi-detail-row deliverable">
+                        <div class="oi-detail-label">Expected Deliverable</div>
+                        <div>${p.deliverable}</div>
+                    </div>
+                </div>
+                <span class="problem-type">${p.type}</span>
+            </div>
+        `).join('') + `
+            <div class="oi-section-divider">
+                <span>Other Problem Statements</span>
+            </div>
+        ` + psbProblems.map(p => `
+            <div class="problem-card">
+              <div class="problem-code">${p.code} — TRK-E</div>
+              <h4>${p.title}</h4>
+              <p>${p.desc}</p>
+              <span class="problem-type">${p.type}</span>
+            </div>
+        `).join('');
+    } else {
+        grid.className = 'problems-grid reveal visible';
+        grid.innerHTML = problems.map(p => `
+            <div class="problem-card">
+              <div class="problem-code">${p.code} — ${track}</div>
+              <h4>${p.title}</h4>
+              <p>${p.desc}</p>
+              <span class="problem-type">${p.type}</span>
+            </div>
+        `).join('');
+    }
 }
 
 // Track tabs
@@ -195,7 +267,10 @@ document.querySelectorAll('.track-tab').forEach(tab => {
         renderProblems(tab.dataset.track);
     });
 });
-renderProblems('TRK-A');
+// Default to Open Innovation (TRK-E) to highlight beginner-friendly problems
+document.querySelector('.track-tab[data-track="TRK-E"]').classList.add('active');
+document.querySelector('.track-tab[data-track="TRK-A"]').classList.remove('active');
+renderProblems('TRK-E');
 
 // ─── Registration Form Logic ──────────────────────────
 const eventSelect = document.getElementById('event');
